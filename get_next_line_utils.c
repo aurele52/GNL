@@ -6,7 +6,7 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:33 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/13 16:18:44 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:27:50 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = 0;
+	free(s1);
+	free(s2);
 	return (str);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*str;
-	int		i;
 
 	str = malloc(sizeof(char) * (len + 1));
 	if (!(str))
 		return (0);
 	s = start + s;
-	i = 0;
 	str[len] = 0;
 	while (len > 0)
 	{
