@@ -6,7 +6,7 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:01 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/13 13:07:51 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:21:56 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,13 @@ char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	int			i;
-	char		*str;
+	char			*str;
 	int			mem;
 	int			ret;
 
 	if (buffer[0] == -1)
 		return (0);
 	str = malloc(sizeof(char));
-	if (!str)
-		return (0);
 	str[0] = 0;
 	while (1)
 	{

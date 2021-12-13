@@ -6,38 +6,20 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:33 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/13 13:12:08 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:18:44 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != -1)
+	while (str[i] && str[i] != -1)
 		i++;
 	return (i);
-}
-
-char	*ft_strdup(char *s)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	str = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
-	if (!(str))
-		return (0);
-	while (s[i])
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = 0;
-	return (str);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -66,10 +48,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	char	*str;
 	int		i;
 
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	while (start + len > ft_strlen(s))
-		len--;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!(str))
 		return (0);
