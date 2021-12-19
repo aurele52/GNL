@@ -6,7 +6,7 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:01 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/19 11:32:01 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:58:04 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ char	*ft_gnl2(char *str, char *buffer, int i, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[2000][BUFFER_SIZE + 1];
 	char		*str;
 
-	if (fd < 0 || fd > 2000 || buffer[0] == -1 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 2000 || buffer[fd][0] == -1 || BUFFER_SIZE <= 0)
 		return (0);
 	str = malloc(sizeof(char));
 	str[0] = 0;
-	return (ft_gnl2(str, buffer, 0, fd));
+	return (ft_gnl2(str, buffer[fd], 0, fd));
 }
