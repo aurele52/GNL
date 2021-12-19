@@ -6,11 +6,11 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:33 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/18 09:55:50 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/19 12:25:57 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 int	ft_strlen(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: audreyer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 09:52:01 by audreyer          #+#    #+#             */
-/*   Updated: 2021/12/19 11:32:01 by audreyer         ###   ########.fr       */
+/*   Updated: 2021/12/19 12:24:46 by audreyer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*ft_itoa(int n, char *str, char *str2)
 {
