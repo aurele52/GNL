@@ -20,4 +20,7 @@ int		ft_atoi(const char *str);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 2000
+#endif
 #endif
