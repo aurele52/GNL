@@ -15,15 +15,22 @@ NAME = gnl.a
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS		=	-g -Wall -Werror -Wextra -MMD
 
 RM = rm -rf
 
-INC = ./include/get_next_line.h
-INCB = ./include/get_next_line_bonus.h
+INC = include/get_next_line.h
+
+INCB = include/get_next_line_bonus.h
+
+-include ${DOBJ}
+
+.c.o:
+			$(CC) $(FLAGS) -I include -c $< -o $(<:.c=.o)
 
 AR = ar rcs
 
+SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR),$(FILE))
 SRCB = $(addprefix $(SRC_DIR),$(FILEB))
 
@@ -36,28 +43,25 @@ FILEB = get_next_line_bonus.c \
 OBJ = $(SRC:.c=.o)
 OBJB = $(SRCB:.c=.o)
 
-SRC_DIR = src/
 
-OBJ_DIR = src/
+DOBJ		=	${SRC:.c=.d}
+DOBJB		=	${SRCB:.c=.d}
 
 $(NAME):	$(OBJ) $(INC)
-		$(CC) $(FLAGS) -c $(SRC)
 		$(AR) $(NAME) $(OBJ)
 
 bonus: $(OBJB) $(INCB)
-		$(CC) $(FLAGS) -c $(SRCB)
 		$(AR) $(NAME) $(OBJB)
 
 
 all: $(NAME)
 
 clean:
-		$(RM) $(OBJ) $(OBJB)
+		${RM} $(OBJ) ${DOBJ} ${OBJB} ${DOBJB}
 
 fclean: clean
 		$(RM) $(NAME)
 
 re:		fclean all
 
-.PHONY: all clean fclean re
-
+.PHONY:		all clean fclean re .c.o
