@@ -11,6 +11,20 @@
 # **************************************************************************** #
 #
 
+FILE = get_next_line.c \
+	   get_next_line_utils.c \
+
+FILEB = get_next_line_bonus.c \
+	   get_next_line_utils_bonus.c\
+
+SRC_DIR = src/
+
+SRC = $(addprefix $(SRC_DIR),$(FILE))
+SRCB = $(addprefix $(SRC_DIR),$(FILEB))
+
+OBJ = $(SRC:.c=.o)
+OBJB = $(SRCB:.c=.o)
+
 NAME = gnl.a
 
 CC = gcc
@@ -23,6 +37,11 @@ INC = include/get_next_line.h
 
 INCB = include/get_next_line_bonus.h
 
+DOBJ		=	${SRC:.c=.d}
+DOBJB		=	${SRCB:.c=.d}
+
+all: $(NAME)
+
 -include ${DOBJ}
 
 .c.o:
@@ -30,22 +49,6 @@ INCB = include/get_next_line_bonus.h
 
 AR = ar rcs
 
-SRC_DIR = src/
-SRC = $(addprefix $(SRC_DIR),$(FILE))
-SRCB = $(addprefix $(SRC_DIR),$(FILEB))
-
-FILE = get_next_line.c \
-	   get_next_line_utils.c \
-
-FILEB = get_next_line_bonus.c \
-	   get_next_line_utils_bonus.c\
-
-OBJ = $(SRC:.c=.o)
-OBJB = $(SRCB:.c=.o)
-
-
-DOBJ		=	${SRC:.c=.d}
-DOBJB		=	${SRCB:.c=.d}
 
 $(NAME):	$(OBJ) $(INC)
 		$(AR) $(NAME) $(OBJ)
@@ -53,8 +56,6 @@ $(NAME):	$(OBJ) $(INC)
 bonus: $(OBJB) $(INCB)
 		$(AR) $(NAME) $(OBJB)
 
-
-all: $(NAME)
 
 clean:
 		${RM} $(OBJ) ${DOBJ} ${OBJB} ${DOBJB}
